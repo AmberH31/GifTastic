@@ -8,7 +8,7 @@ function buttonCollect() {
 
     var button = $("<button>");
     a.addClass("animals");
-    // a.attr("data-name", topics[i]);
+    a.attr("data-name", topics[i]);
     a.html(topics[i]);
   }
   console.log(topics.length);
