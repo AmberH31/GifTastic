@@ -1,20 +1,43 @@
 var topics = ["dog", "cat", "tiger", "rabbit", "snake", "hourse", "sheep"];
+function displayInfo() {
+  var animal = $(this).attr("data-name");
 
-function buttonCollect() {
-  $("#buttonCollect").empty();
+  var queryURL =
+    "https://api.giphy.com/v1/gifs/search" +
+    animal +
+    "&api_key=B1RJ1jEB8ZIJDLB6wH4JacJAc2QVYtjJ";
 
-  for (i = 0; i < topics.length; i++) {
-    // 建立原本的按鈕
-
-    var button = $("<button>");
-    a.addClass("animals");
-    a.attr("data-name", topics[i]);
-    a.html(topics[i]);
-  }
-  console.log(topics.length);
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).done(function(response) {
+    console.log(response);
+    $("#gifDisplay").html(JSON.stringify(response));
+  });
 }
 
-var queryURL =
-  "https://api.giphy.com/v1/gifs/search" +
-  //   randomWord +
-  "&api_key=B1RJ1jEB8ZIJDLB6wH4JacJAc2QVYtjJ";
+function renderButton() {
+  $("#buttonCollect").empty();
+
+  for (var i = 0; i < topics.length; i++) {
+    var a = $("<button>");
+    a.addClass("new");
+    a.attr("data-name", topics[i]);
+    a.text(topics[i]);
+    $("#buttonCollect").append(a);
+  }
+}
+
+$("#buttonCreate").on("click", function(event) {
+  event.preventDefault();
+
+  var animal = $("#buttonCreate")
+    .val()
+    .trim();
+  topics.push(animal);
+  console.log(topics);
+  renderButton();
+});
+
+$(document).on("click", ".new", gifDisplay);
+renderButton();
