@@ -28,7 +28,7 @@ function renderButton() {
   }
 }
 
-$("#buttonCreate").on("click", function(event) {
+$("#buttonClick").on("click", function(event) {
   event.preventDefault();
 
   var animal = $("#buttonCreate")
