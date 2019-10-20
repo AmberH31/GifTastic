@@ -1,0 +1,52 @@
+body {
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(210, 237, 255),
+    rgb(255, 251, 217)
+  );
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+}
+
+* {
+  padding: 2vh;
+}
+
+h1 {
+  color: #12676d;
+  padding-bottom: 50px;
+}
+hr {
+  border-color: #12676d;
+}
+
+#buttonCollect .new {
+  width: 10vw;
+  background-color: transparent;
+  color: #288b92;
+  text-decoration: none;
+  border: 2px solid #288b92;
+  margin: 1vh 1vw;
+  border-radius: 12px;
+}
+#buttonCollect .new:hover {
+  transition: 0.5s;
+  background-color: #288b92;
+  border: none;
+  color: aliceblue;
+}
+
+label {
+  color: #12676d;
+}
+
+#buttonClick {
+  width: 10vw;
+  background-color: #288b92;
+  color: #ffffff;
+  text-decoration: none;
+  border: none;
+  margin: 1vh 1vw;
+  border-radius: 12px;
+}
