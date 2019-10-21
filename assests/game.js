@@ -1,10 +1,10 @@
 var topics = ["dog", "cat", "tiger", "rabbit", "snake", "horse", "sheep"];
-function displayInfo() {
-  var animal = $(globalThis).attr("data-name");
+$("button").on("click", function() {
+  var animalBtn = $("#gifDisplay").attr("data-name");
 
   var queryURL =
     "https://api.giphy.com/v1/gifs/search?q=" +
-    animal +
+    animalBtn +
     "&api_key=B1RJ1jEB8ZIJDLB6wH4JacJAc2QVYtjJ";
 
   console.log(queryURL);
@@ -12,11 +12,11 @@ function displayInfo() {
   $.ajax({
     url: queryURL,
     method: "GET"
-  }).done(function(response) {
+  }).then(function(response) {
     console.log(queryURL);
     $("#gifDisplay").html(JSON.stringify(response));
   });
-}
+});
 
 function renderButton() {
   $("#buttonCollect").empty();
