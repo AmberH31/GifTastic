@@ -1,5 +1,5 @@
 var topics = ["dog", "cat", "tiger", "rabbit", "snake", "horse", "sheep"];
-$("button").on("click", function() {
+$(document).on("click", "button", function() {
   var animalBtn = $("#gifDisplay").attr("data-name");
 
   var queryURL =
@@ -13,8 +13,20 @@ $("button").on("click", function() {
     url: queryURL,
     method: "GET"
   }).then(function(response) {
-    console.log(queryURL);
-    $("#gifDisplay").html(JSON.stringify(response));
+    // console.log(response);
+    //   $("#gifDisplay").html(JSON.stringify(response));
+    var results = response.data;
+    for (var i = 0; i < results.length; i++) {
+      var gifDiv = $("<div>");
+      //   var rating = results[i].rating;
+      //   var p = $("<p>").text("Rating: " + rating);
+      var animalImage = $("<img>");
+      animalImage.attr("src", results[i].images.fixed_height_still.url);
+      //   gifDiv.prepend(p);
+      gifDiv.prepend(animalImage);
+      $("#gifDisplay").prepend(gifDiv);
+    }
+    // console.log("data here" + results);
   });
 });
 
