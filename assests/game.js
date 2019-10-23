@@ -1,6 +1,6 @@
 var topics = ["dog", "cat", "tiger", "rabbit", "snake", "horse", "sheep"];
-$(document).on("click", "button", function() {
-  var animalBtn = $("#gifDisplay").attr("data-name");
+$(document).on("click", ".new", function() {
+  var animalBtn = $(this).attr("data-name");
 
   var queryURL =
     "https://api.giphy.com/v1/gifs/search?q=" +
@@ -8,6 +8,7 @@ $(document).on("click", "button", function() {
     "&api_key=B1RJ1jEB8ZIJDLB6wH4JacJAc2QVYtjJ";
 
   console.log(queryURL);
+  console.log(animalBtn);
 
   $.ajax({
     url: queryURL,
@@ -40,9 +41,9 @@ function renderButton() {
     a.text(topics[i]);
     $("#buttonCollect").append(a);
   }
-  $("#buttonClick").on("click", function(displayInfo) {
-    $("#buttonCollect").append("");
-  });
+  // $("#buttonClick").on("click", function(displayInfo) {
+  //   $("#buttonCollect").append(a);
+  // });
 }
 
 $("#buttonClick").on("click", function(event) {
@@ -54,6 +55,7 @@ $("#buttonClick").on("click", function(event) {
   topics.push(animal);
   console.log(topics);
   renderButton();
+  $("#buttonCreate").val("");
 });
 
 $(document).on("click", ".new", gifDisplay);
